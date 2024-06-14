@@ -1,6 +1,7 @@
 
 import { View, StyleSheet } from 'react-native';
 import Home from '../../components/home'
+import React from 'react';
 
 export default function HomeScreen() {
   return(

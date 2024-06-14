@@ -1,7 +1,8 @@
 import React from 'react';
-import {Text, View, StyleSheet, TouchableOpacity, Touchable } from 'react-native';
+import {Text, View, StyleSheet, TouchableOpacity  } from 'react-native';
 import Sobre from './sobre';
 import { LinearGradient } from 'expo-linear-gradient';
+
 
 
 export default function App(){
@@ -15,11 +16,19 @@ export default function App(){
                 >
 
                 <View style={styles.container}>    
-                    <Text style={styles.title}>Página Inicial</Text>
-                    <Text style={styles.title}>Exemplo 1</Text>
+                    <View style={styles.div}>
+                    <Text style={styles.title}>Vários lugares, um</Text>
+                    </View>
+                    <Text style={styles.title}>aplicativo</Text>
+                    <br></br>
+                    <Text style={styles.subtitle}>Encontre-se em um instante com nosso aplicativo de localização instantânea.</Text>
+                    <img src='../assets/images/icone1.png' style={styles.imagem}></img>
+                    
                     <TouchableOpacity style={styles.button} onPress={() => setPage('sobre')}>
                         <Text style={styles.buttonText}>Clique Aqui!</Text>
-                    </TouchableOpacity>
+                    </TouchableOpacity >
+                    
+                    
                 </View>
                 </LinearGradient>
 
@@ -33,7 +42,25 @@ export default function App(){
 
 
 const styles = StyleSheet.create({
+
+    div:{
+        justifyContent: "flex-start",
+    },
+
+    imagem:{
+    height: 296,
+    width: 296,
+    marginBottom: 76,
+},
+
+    subtitle:{
+        fontSize: 24,
+        fontFamily: 'Montserrat',
+        marginBottom: 76,
+    },
+
     container:{
+        padding: 40,
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
@@ -54,16 +81,25 @@ const styles = StyleSheet.create({
         fontStyle: 'normal',
         fontWeight: 700,
         letterSpacing: -1.6,
+        marginBottom: 20,
     },
 
     button:{
         backgroundColor: '#007BFF',
         padding: 10,
-        borderRadius: 5,
+        
     },
 
     buttonText: {
-        color: 'white',
-        fontSize: 16,
+        color: 'black',
+        fontSize: 20,
+        fontWeight: 'bold',
+        width: 350,
+        height: 60,
+        flexShrink: 0,
+        backgroundColor: '#fff',
+        justifyContent: 'center',
+        textAlign: 'center',
+        alignContent: 'center',
     },
 });
