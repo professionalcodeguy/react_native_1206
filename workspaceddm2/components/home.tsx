@@ -17,15 +17,14 @@ export default function App(){
 
                 <View style={styles.container}>    
                     <View style={styles.div}>
-                    <Text style={styles.title}>Vários lugares, um</Text>
+                    <Text style={styles.title}>Vários lugares, um aplicativo</Text>
                     </View>
-                    <Text style={styles.title}>aplicativo</Text>
                     <br></br>
-                    <Text style={styles.subtitle}>Encontre-se em um instante com nosso aplicativo de localização instantânea.</Text>
+                    <Text style={styles.subtitulo}>Encontre-se em um instante com nosso aplicativo de localização instantânea.</Text>
                     <img src='../assets/images/icone1.png' style={styles.imagem}></img>
                     
                     <TouchableOpacity style={styles.button} onPress={() => setPage('sobre')}>
-                        <Text style={styles.buttonText}>Clique Aqui!</Text>
+                        <Text style={styles.buttonText}>Minha Localização</Text>
                     </TouchableOpacity >
                     
                     
@@ -47,20 +46,30 @@ const styles = StyleSheet.create({
         justifyContent: "flex-start",
     },
 
-    imagem:{
-    height: 296,
-    width: 296,
-    marginBottom: 76,
-},
+    subtitulo:{
+        display: 'flex',
+        width: 350,
+        height: 86,
+        flexDirection: 'column',
+        justifyContent: 'center',
+        flexShrink: 0,
+        color: '#000',
+        textAlign: 'justify',
+        fontSize: 24,       
+        fontWeight: 400,
+    },
 
-    subtitle:{
-        fontSize: 24,
-        fontFamily: 'Montserrat',
+    imagem:{
+        height: 296,
+        width: 296,
         marginBottom: 76,
+        marginTop: 76,
+        flexShrink: 0,
     },
 
     container:{
-        padding: 40,
+        width: 430,
+        height: 932,
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
@@ -75,31 +84,38 @@ const styles = StyleSheet.create({
     },
 
     title:{
+        marginTop: 120,
+        width: 360,
         color: '#000',
-        fontFamily: 'Montserrat-Regular',
+        fontFamily: 'Arial',
         fontSize: 32,
         fontStyle: 'normal',
         fontWeight: 700,
         letterSpacing: -1.6,
         marginBottom: 20,
-    },
-
-    button:{
-        backgroundColor: '#007BFF',
-        padding: 10,
         
     },
 
+    button:{
+        width: 350,
+        height: 60,
+        padding: 10,
+        borderRadius: 8,
+        border: '2px solid #000',
+        backgroundColor: '#FFF',
+        marginBottom: 120,
+        flexShrink: 0,
+    },
+
     buttonText: {
+        height: 34,   
         color: 'black',
         fontSize: 20,
         fontWeight: 'bold',
-        width: 350,
-        height: 60,
         flexShrink: 0,
-        backgroundColor: '#fff',
-        justifyContent: 'center',
+        backgroundColor: '#fff',   
         textAlign: 'center',
         alignContent: 'center',
+        
     },
 });
