@@ -1,12 +1,25 @@
 import React from 'react';
 import {Text, View, StyleSheet, TouchableOpacity, Touchable } from 'react-native';
 import Home from './home';
+import * as SplashScreen from 'expo-splash-screen';
+import useLoadFonts from '../hooks/useLoadFonts';
+
+
+SplashScreen.preventAutoHideAsync();
 
 export default function App(){
+    const { fontsLoaded, onLayoutRootView } = useLoadFonts();
+
+    
     const [page, setPage] = React.useState('sobre');
     const renderPage = () => {
         if (page === 'sobre') {
+            if(!fontsLoaded)
+                return null;
             return(
+                <View
+      onLayout={onLayoutRootView}
+    >
                 <View style={styles.container}>
                 <img src='../assets/images/icone2.png' style={styles.imagem}></img>
                 <Text style={styles.title}>Localização Atual</Text>
@@ -20,10 +33,12 @@ export default function App(){
                     <Text style={styles.buttonText}>Voltar</Text>
                 </TouchableOpacity>
                 </View>
+                </View>
             );
         } else if (page === 'home') {
             return <Home />;
         }
+        
     };
     return <View style={styles.container}>{renderPage()}</View>;
 }
@@ -31,6 +46,7 @@ export default function App(){
 const styles = StyleSheet.create({
 
     button1:{
+        fontFamily: 'Montserrat_Bold',
         width: 350,
         height: 60,
         padding: 10,
@@ -46,6 +62,7 @@ const styles = StyleSheet.create({
         color: 'black',
         fontSize: 20,
         fontWeight: 'bold',
+        fontFamily: 'Montserrat_Light',
         flexShrink: 0,
         backgroundColor: '#fff',   
         textAlign: 'center',
@@ -64,6 +81,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         flexShrink: 0,
         color: '#000',
+        fontFamily: 'Montserrat-Light',
         fontSize: 24,
         fontStyle: 'normal',
         fontWeight: 400,
@@ -72,6 +90,7 @@ const styles = StyleSheet.create({
     },
 
     latitudeStyle:{
+        fontFamily: 'Montserrat-Light',
         display: 'flex',
         width: 350,
         height: 28,
@@ -97,7 +116,7 @@ const styles = StyleSheet.create({
     },
 
     container:{
-        backgroundColor: '#fff',
+        backgroundColor: '#f4f4f4',
         width: 430,
         height: 932,
         flex: 1,
@@ -112,7 +131,7 @@ const styles = StyleSheet.create({
         marginBottom: 40, 
         width: 350,
         color: '#000',
-        fontFamily: 'Arial',
+        fontFamily: 'Montserrat_Bold',
         fontSize: 32,
         fontStyle: 'normal',
         fontWeight: 700,
@@ -135,7 +154,7 @@ const styles = StyleSheet.create({
     buttonText: {
         color: '#000',
         textAlign: 'center',
-        fontFamily: 'Arial',
+        fontFamily: 'Montserrat_Bold',
         fontSize: 24,
         fontStyle: 'normal',
         fontWeight: 400,

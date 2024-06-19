@@ -3,13 +3,24 @@ import {Text, View, StyleSheet, TouchableOpacity  } from 'react-native';
 import Sobre from './sobre';
 import { LinearGradient } from 'expo-linear-gradient';
 
+import * as SplashScreen from 'expo-splash-screen';
+import useLoadFonts from '../hooks/useLoadFonts';
 
+SplashScreen.preventAutoHideAsync();
 
 export default function App(){
+    const { fontsLoaded, onLayoutRootView } = useLoadFonts();
+
+    if(!fontsLoaded)
+    return null;
+
     const [page, setPage] = React.useState('home');
     const renderPage = () =>  {
         if(page === 'home'){
             return(
+                <View
+      onLayout={onLayoutRootView}
+    >
                 <LinearGradient
                     colors={['#91DB94', '#C3C3E7', '#F4F4F4']}
                     style={styles.gradient}
@@ -30,7 +41,7 @@ export default function App(){
                     
                 </View>
                 </LinearGradient>
-
+                </View>
             );
         } else if (page === 'sobre') {
             return <Sobre />;
@@ -47,6 +58,7 @@ const styles = StyleSheet.create({
     },
 
     subtitulo:{
+        fontFamily: 'Montserrat_Light',
         display: 'flex',
         width: 350,
         height: 86,
@@ -87,7 +99,7 @@ const styles = StyleSheet.create({
         marginTop: 120,
         width: 360,
         color: '#000',
-        fontFamily: 'Arial',
+        fontFamily: 'Montserrat_Bold',
         fontSize: 32,
         fontStyle: 'normal',
         fontWeight: 700,
@@ -116,6 +128,6 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',   
         textAlign: 'center',
         alignContent: 'center',
-        
+        fontFamily: 'Montserrat_Bold',
     },
 });
