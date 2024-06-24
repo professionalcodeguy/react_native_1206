@@ -4,12 +4,13 @@ import Home from './home';
 import * as SplashScreen from 'expo-splash-screen';
 import useLoadFonts from '../hooks/useLoadFonts';
 
-
 SplashScreen.preventAutoHideAsync();
 
 export default function App(){
     const { fontsLoaded, onLayoutRootView } = useLoadFonts();
 
+    if(!fontsLoaded)
+    return null;
     
     const [page, setPage] = React.useState('sobre');
     const renderPage = () => {
@@ -24,10 +25,10 @@ export default function App(){
                 <img src='../assets/images/icone2.png' style={styles.imagem}></img>
                 <Text style={styles.title}>Localização Atual</Text>
 
-                <Text style={styles.latitudeStyle}>Latitude: 0,00</Text>
-                <Text style={styles.longitudeStyle}>Longitude: 0,00</Text>
+                <Text style={styles.text}>Latitude: 0,00</Text>
+                <Text style={styles.text}>Longitude: 0,00</Text>
                 <TouchableOpacity style={styles.button1} onPress={() => setPage('')}>
-                    <Text style={styles.text}>Obter Localização</Text>
+                    <Text style={styles.buttonText1}>Obter Localização</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.button} onPress={() => setPage('home')}>
                     <Text style={styles.buttonText}>Voltar</Text>
@@ -57,53 +58,23 @@ const styles = StyleSheet.create({
         flexShrink: 0,
     },
 
-    text: {
-        height: 34,   
+    text: {  
         color: 'black',
         fontSize: 20,
         fontWeight: 'bold',
         fontFamily: 'Montserrat_Light',
-        flexShrink: 0,
-        backgroundColor: '#fff',   
-        textAlign: 'center',
-        alignContent: 'center',     
+        flexShrink: 0,   
+        marginLeft: 40,
+        marginRight: 40,
+        display: 'flex',
+        width: 350,
+        height: 28,
+        flexDirection: 'column',
+        justifyContent: 'center',
     },
 
     div:{
         justifyContent: "flex-start",
-    },
-
-    longitudeStyle:{
-        display: 'flex',
-        width: 350,
-        height: 28,
-        flexDirection: 'column',
-        justifyContent: 'center',
-        flexShrink: 0,
-        color: '#000',
-        fontFamily: 'Montserrat-Light',
-        fontSize: 24,
-        fontStyle: 'normal',
-        fontWeight: 400,
-        marginLeft: 40,
-        marginRight: 40,
-    },
-
-    latitudeStyle:{
-        fontFamily: 'Montserrat-Light',
-        display: 'flex',
-        width: 350,
-        height: 28,
-        flexDirection: 'column',
-        justifyContent: 'center',
-        flexShrink: 0,
-        color: '#000',
-        fontSize: 24,
-        fontStyle: 'normal',
-        fontWeight: 400,
-        marginLeft: 40,
-        marginRight: 40,
-        marginBottom: 20,
     },
 
     imagem:{
@@ -154,9 +125,21 @@ const styles = StyleSheet.create({
     buttonText: {
         color: '#000',
         textAlign: 'center',
-        fontFamily: 'Montserrat_Bold',
+        fontFamily: 'Montserrat_Light',
         fontSize: 24,
         fontStyle: 'normal',
-        fontWeight: 400,
+        fontWeight: 600,
+    },
+
+    buttonText1: {
+        height: 34,   
+        color: 'black',
+        fontSize: 20,
+        fontWeight: 'bold',
+        flexShrink: 0,
+        backgroundColor: '#fff',   
+        textAlign: 'center',
+        alignContent: 'center',
+        fontFamily: 'Montserrat_Bold',
     },
 });
